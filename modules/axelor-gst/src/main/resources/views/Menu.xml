@@ -38,6 +38,16 @@
 	<view type="form" name="country-form"/> 
  </action-view>
  
+ <!-- Second menu in dash board -->
+ 
+<menuitem title="Company" name="axelor-root-company" parent="axelor-root" icon-background="green" icon="fa-user"/>
 
+<menuitem title="Company" name="axelor-root-company-company" parent="axelor-root-company" action=""/>
+
+<menuitem title="Bank Account" name="axelor-root-company-bankaccount" parent="axelor-root-company" action="axelor.root.company.bankaccount"/>
+<action-view name="axelor.root.company.bankaccount" title="Bank Account" model="com.axelor.company.db.BankAccount">
+	<view type="grid" name="bank-grid"/>
+	<view type="form" name="bank-form"/>
+</action-view>
 
 </object-views>
