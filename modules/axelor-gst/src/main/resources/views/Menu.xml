@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+<menuitem title="Dash Board" name="axelor-root" icon="fa-user"/>
+
+<menuitem title="Party" name="axelor-root-party" parent="axelor-root" icon-background="red" icon="fa-user"/>
+
+<menuitem title="Party" name="axelor-root-party-parti" parent="axelor-root-party"/>
+
+<menuitem title="Contact" name="axelor-root-party-contact" parent="axelor-root-party"/>
+
+<menuitem title="Configuration" name="axelor-root-party-configuration" parent="axelor-root-party"/>
+
+<menuitem title="Address" name="axelor-root-party-configuration-address" parent="axelor-root-party-configuration" action="action.axelor.root.address"/>
+ <action-view name="action.axelor.root.address" title="Address" model="com.axelor.address.db.Address">
+		<view type="grid" name="address-grid"/>
+		<view type="form" name="address-from"/>
+		
+ </action-view>
+ 
+ <menuitem title="City" name="axelor-root-party-configuration-city" parent="axelor-root-party-configuration" action="action.axelor.root.party.configuration.city"/>
+ <action-view name="action.axelor.root.party.configuration.city" title="City" model="com.axelor.address.db.City">
+ 		<view type="grid" name="city-grid"/>
+ 		<view type="form" name="city-form"/>
+ </action-view>
+ 
+ <menuitem title="State" name="axelor-root-party-configuration-state" parent="axelor-root-party-configuration" action="action.axelor.root.party.configuration.state"/>
+ <action-view name="action.axelor.root.party.configuration.state" title="State" model="com.axelor.address.db.State">
+	<view type="grid" name="state-grid"/>
+	<view type="form" name="state-form"/> 
+ </action-view>
+ 
+ <menuitem title="Country" name="axelor-root-party-configuration-country" parent="axelor-root-party-configuration" action="action.axelor.root.party.configuration.country"/>
+ <action-view name="action.axelor.root.party.configuration.country" title="County" model="com.axelor.address.db.Country">
+	<view type="grid" name="country-grid"/>
+	<view type="form" name="country-form"/> 
+ </action-view>
+ 
+
+
+</object-views>
