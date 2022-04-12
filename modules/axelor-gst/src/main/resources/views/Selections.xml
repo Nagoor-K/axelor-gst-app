@@ -10,10 +10,25 @@
 	<option value="other">Other</option>
 </selection>
 
-<!-- Selection for Ban account type -->
+<!-- Selection for Bank account type -->
 <selection name="bankaccount.select.account.type">
 	<option value="current">Current</option>
 	<option value="saving">Saving</option>
+</selection>
+
+<!-- Selection for contact type -->
+
+<selection name="company.select.contact.type">
+	<option value="primary">Primary</option>
+	<option value="secondary">Secondary</option>
+	<option value="others">Others</option>
+</selection>
+
+<!-- Selecton for party model -->
+
+<selection name="company.select.party.type">
+	<option value="individual">Individual</option>
+	<option value="company">Company</option>
 </selection>
 
 </object-views>

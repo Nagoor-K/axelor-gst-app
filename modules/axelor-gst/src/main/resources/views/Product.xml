@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+	
+	<grid model="com.axelor.product.db.Product" title="Products" name="product-grid">
+		<field name="name"/>
+		<field name="code"/>
+		<field name="hsbn"/>
+		<field name="category"/>
+		<field name="saleprice"/>
+		<field name="costprice"/>
+		<field name="image" widget="image"/>
+		<field name="gstrate"/>
+	</grid>
+	
+	<form model="com.axelor.product.db.Product" title="Product" name="product-form">
+			<panel>
+				<field name="name"/>
+				<field name="code"/>
+				<field name="hsbn"/>
+				<field name="category" onChange="save,com.axelor.product.db.controller.ProductController:setGst"/>
+				<field name="saleprice"/>
+				<field name="costprice"/>
+				<field name="image"/>
+				<field name="gstrate"/>
+			</panel>
+	</form>
+	
+	<cards name="product-cards" model="com.axelor.product.db.Product" title="Product Card View" >
+				<field name="name"/>
+				<field name="code"/>
+				<field name="hsbn"/>
+				<field name="category" onChange="com.axelor.product.db.controller.ProductController:setGst"/>
+				<field name="saleprice"/>
+				<field name="costprice"/>
+				<field name="image"/>
+				<field name="gstrate"/>
+				<template>
+				<![CDATA[
+					 <div class="span4 card-image">
+					    <img ng-if="image" ng-src="{{$image('image', 'image')}}">
+					  </div>
+					  <div class="span4">
+					  	<strong>{{name}}</strong>
+					    <strong>{{code}}</strong>
+					    <strong>{{hsbn}}</strong>
+					    <strong>{{category}}</strong>
+					    <strong>{{saleprice}}</strong>
+					    <strong>{{costprice}}</strong>
+					    <strong>{{gstrate}}</strong>
+					  </div>
+				]]>
+				</template>
+		</cards>
+		
+		<!-- <action-record name="action.copy.from.category" model="com.axelor.product.db.Product">
+			<field name="gstrate" expr="eval: __ref__" if="__ref__ instanceof Category"/>
+		</action-record> -->
+		
+
+</object-views>

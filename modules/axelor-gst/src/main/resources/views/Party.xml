@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+	
+	<grid model="com.axelor.party.db.Party" title="Parties" name="party-grid">
+			<field name="reference"/>
+			<field name="name"/>
+			<field name="type"/>
+			<field name="customer"/>
+			<field name="supplier"/>
+			<field name="gstin"/>
+			<field name="contactList" />
+			<field name="addresset"/>
+	</grid>
+	
+	<form model="com.axelor.party.db.Party" title="Party" name="party-form">
+			<panel>
+				<field name="reference"/>
+			<field name="name"/>
+			<field name="type"/>
+			<field name="customer"/>
+			<field name="supplier"/>
+			<field name="gstin"/>
+			<field name="contactList" colSpan="12">
+				<editor x-show-titles="false">
+					    <field name="name" colSpan="12"/>
+					    <field name="type" colSpan="12"/>
+					    <field name="primaryemail" colSpan="4"/>
+					    <field name="secondaryemail" colSpan="4"/>
+					    <field name="primaryphone" colSpan="4"/>
+					    <field name="secondaryphone" colSpan="12" />
+				</editor>
+			</field>
+			<field name="addresset" colSpan="12">
+				<editor x-show-titles="false">
+					    <field name="type" colSpan="12"/>
+					    <field name="line1" colSpan="12"/>
+					    <field name="line2" colSpan="4"/>
+					    <field name="city" colSpan="4"/>
+					    <field name="state" colSpan="4"/>
+					    <field name="country" colSpan="12" />
+					    <field name="pincode" colSpan="4"/>
+				</editor>
+			</field>
+			</panel>
+	</form>
+
+</object-views>
+

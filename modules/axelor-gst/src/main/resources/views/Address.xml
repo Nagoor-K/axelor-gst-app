@@ -14,7 +14,7 @@
 			
 	</grid>
 	
-	<form model="com.axelor.address.db.Address" title="Address" name="address-from">
+	<form model="com.axelor.address.db.Address" title="Address" name="address-form">
 			<panel>
 				<field name="type"/>
 				<field name="line1"/>

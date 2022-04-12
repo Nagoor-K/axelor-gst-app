@@ -7,16 +7,24 @@
 
 <menuitem title="Party" name="axelor-root-party" parent="axelor-root" icon-background="red" icon="fa-user"/>
 
-<menuitem title="Party" name="axelor-root-party-parti" parent="axelor-root-party"/>
+<menuitem title="Party" name="axelor-root-party-parti" parent="axelor-root-party" action="action.axelor.root.party.parti"/>
+<action-view name="action.axelor.root.party.parti" title="Party" model="com.axelor.party.db.Party">
+	<view type="grid" name="party-grid"/>
+	<view type="form" name="party-form"/>
+</action-view>
 
-<menuitem title="Contact" name="axelor-root-party-contact" parent="axelor-root-party"/>
+<menuitem title="Contact" name="axelor-root-party-contact" parent="axelor-root-party" action="action.axelor.root.party.contact"/>
+<action-view name="action.axelor.root.party.contact" title="Contacts" model="com.axelor.address.db.Contact">
+	<view type="grid" name="contact-grid"/>
+	<view type="form" name="contact-form"/>
+</action-view>
 
 <menuitem title="Configuration" name="axelor-root-party-configuration" parent="axelor-root-party"/>
 
 <menuitem title="Address" name="axelor-root-party-configuration-address" parent="axelor-root-party-configuration" action="action.axelor.root.address"/>
  <action-view name="action.axelor.root.address" title="Address" model="com.axelor.address.db.Address">
 		<view type="grid" name="address-grid"/>
-		<view type="form" name="address-from"/>
+		<view type="form" name="address-form"/>
 		
  </action-view>
  
@@ -42,12 +50,39 @@
  
 <menuitem title="Company" name="axelor-root-company" parent="axelor-root" icon-background="green" icon="fa-user"/>
 
-<menuitem title="Company" name="axelor-root-company-company" parent="axelor-root-company" action=""/>
+<menuitem title="Company" name="axelor-root-company-company" parent="axelor-root-company" action="axelor.root.company.company"/>
+<action-view name="axelor.root.company.company" title="Company" model="com.axelor.company.db.Company">
+	<view type="grid" name="company-grid"/>
+	<view type="form" name="company-form"/> 
+</action-view>
 
 <menuitem title="Bank Account" name="axelor-root-company-bankaccount" parent="axelor-root-company" action="axelor.root.company.bankaccount"/>
 <action-view name="axelor.root.company.bankaccount" title="Bank Account" model="com.axelor.company.db.BankAccount">
 	<view type="grid" name="bank-grid"/>
 	<view type="form" name="bank-form"/>
+</action-view>
+
+<menuitem title="Sequence" name="axelor-root-company-sequence" parent="axelor-root-company" action="axelor.root.company.sequence"/>
+<action-view name="axelor.root.company.sequence" title="Bank Account" model="com.axelor.company.db.Sequences">
+	<view type="grid" name="sequence-grid"/>
+	<view type="form" name="sequence-form"/>
+</action-view>
+
+<!-- third menu in dah board product menu -->
+
+<menuitem title="Product" name="axelor-root-product" parent="axelor-root" icon-background="blue" icon="fa-user"/>
+
+<menuitem title="Product" name="axelor-root-product-product" parent="axelor-root-product" action="axelor.root.product.product"/>
+<action-view name="axelor.root.product.product" title="Product" model="com.axelor.product.db.Product">
+	<view type="grid" name="product-grid"/>
+	<view type="form" name="product-form"/>
+	<view type="cards" name="product-cards"/>
+</action-view>
+
+<menuitem title="Product Category" name="axelor-root-product-productcategory" parent="axelor-root-product" action="axelor.root.product.product.category"/>
+<action-view name="axelor.root.product.product.category" title="Product Category" model="com.axelor.product.db.Category">
+	<view type="grid" name="category-grid"/>
+	<view type="form" name="category-form"/>
 </action-view>
 
 </object-views>

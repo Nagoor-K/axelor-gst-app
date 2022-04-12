@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.4.xsd">
+
+<module package="com.axelor.party.db" name="Party"/>
+
+<entity name="Party">
+	<string name="reference" title="Reference"  readonly="true"/>
+	<string name="name" title="Name" required="true"/>
+	<string name="type" title="Type" selection="company.select.party.type" default="company"/>
+	<boolean name="customer" title="Customer"/>
+	<boolean name="supplier" title="Supplier"/>
+	<string name="gstin" title="GSTIN" min="15" max="15" />
+	<one-to-many ref="com.axelor.address.db.Contact" name="contactList" title="Contacts"/>
+	<one-to-many ref="com.axelor.address.db.Address" name="addresset" title="Addresses"/>
+	
+</entity>
+
+
+</domain-models>
