@@ -4,6 +4,10 @@
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 	
 	<grid model="com.axelor.product.db.Product" title="Products" name="product-grid">
+		<toolbar>
+			<button onClick="action.create.invoice" name="invoice" title="Create Invoice"/>
+  			<button onClick="action.create.report" name="reports" title="Print" prompt="Are Sure want to test?" icon="fa-print"/>
+  		</toolbar>
 		<field name="name"/>
 		<field name="code"/>
 		<field name="hsbn"/>

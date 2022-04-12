@@ -31,4 +31,13 @@
 	<option value="company">Company</option>
 </selection>
 
+<!-- Select status for invoice -->
+
+<selection name="invoice.select.status.type">
+	<option value="draft">Draft</option>
+	<option value="validated">Validated</option>
+	<option value="paid">Paid</option>
+	<option value="cancelled">Cancelled</option>
+</selection>
+
 </object-views>

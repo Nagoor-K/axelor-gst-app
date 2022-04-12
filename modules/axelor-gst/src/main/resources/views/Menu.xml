@@ -85,4 +85,21 @@
 	<view type="form" name="category-form"/>
 </action-view>
 
+<!-- Menu for invoices -->
+
+<menuitem title="Invoice" name="axelor-root-invoice" parent="axelor-root" icon-background="yellow" icon="fa-user"/>
+
+<menuitem title="Invoice" name="axelor-root-invoice-invoice" parent="axelor-root-invoice" action="axelor.root.invoice.invoice"/>
+<action-view name="axelor.root.invoice.invoice" title="Invoice" model="com.axelor.invoice.db.Invoice">
+	<view type="grid" name="invo-grid"/>
+	<view type="form" name="invo-form"/>
+	<view type="kanban" name="invo-kanban"/>
+</action-view>
+
+<menuitem title="Invoice Line" name="axelor-root-invoice-invoice-line" parent="axelor-root-invoice" action="axelor.root.invoice.invoice.line"/>
+<action-view name="axelor.root.invoice.invoice.line" title="Invoice Line" model="com.axelor.invoice.db.InvoiceLine">
+	<view type="grid" name="invoice-grid"/>
+	<view type="form" name="invoice-form"/>
+</action-view>
+
 </object-views>

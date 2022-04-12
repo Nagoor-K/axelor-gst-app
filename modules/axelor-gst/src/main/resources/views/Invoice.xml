@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+	
+	<grid model="com.axelor.invoice.db.Invoice" title="Invoice" name="invo-grid">
+			<field name="status"/>
+			<field name="company"/>
+			<field name="reference"/>
+			<field name="date"/>
+			<field name="priority"/>
+			<field name="party"/>
+			<field name="partycontact"/>
+			<field name="invoiceaddress"/>
+			<field name="shippingaddress"/>
+			<field name="uiasa"/>
+			<field name="netamt"/>
+			<field name="netigst"/>
+			<field name="netcgst"/>
+			<field name="netsgst"/>
+			<field name="grossamt"/>
+	</grid>
+	
+	<form model="com.axelor.invoice.db.Invoice" title="Country" name="invo-form">
+			<panel>
+				<field name="status" widget="NavSelect"/>
+				<field name="company"/>
+				<field name="reference"/>
+				<field name="ondate"/>
+				<field name="priority"/>
+				<field name="party"/>
+				<field name="partycontact"/>
+				<field name="invoiceaddress"/>
+				<field name="shippingaddress"/>
+				<field name="uiasa"/>
+				<field name="netamt"/>
+				<field name="netigst"/>
+				<field name="netcgst"/>
+				<field name="netsgst"/>
+				<field name="grossamt"/>
+				<panel-related field="invoiceitems" />
+			</panel>
+	</form>
+	
+	<kanban columnBy="status" model="com.axelor.invoice.db.Invoice" sequenceBy="priority" title="Invoice" name="invo-kanban">
+		<field name="company"/>
+				<field name="reference"/>
+				<field name="ondate"/>
+				<field name="priority"/>
+				<field name="party"/>
+				<field name="partycontact"/>
+				<field name="invoiceaddress"/>
+				<field name="shippingaddress"/>
+				<field name="uiasa"/>
+				<field name="netamt"/>
+				<field name="netigst"/>
+				<field name="netcgst"/>
+				<field name="netsgst"/>
+				<field name="grossamt"/>
+				<template>
+		<![CDATA[
+			<div>
+				<h4>Reference</h4>
+				<h5>{{record.reference}}</h5>
+				<h4>Date</h4>
+				<h5>{{record.ondate}}</h5>
+				<h4>Partty</h4>
+				<h5>{{record.party}}</h5>
+				<h4>Party Contact</h4>
+				<h5>{{record.partycontact}}</h5>
+				<h4>Invoice Address</h4>
+				<h5>{{record.invoiceaddress}}</h5>
+				<h4>Shipping Address</h4>
+				<h5>{{record.shippingaddress}}</h5>
+				<h4>Use Invoice address as Shipping address</h4>
+				<h5>{{record.uiasa}}</h5>
+				<h4>Net Amount</h4>
+				<h5>{{record.netamt}}</h5>
+				<h4>Net IGST</h4>
+				<h5>{{record.netigst}}</h5>
+				<h4>Net CGST</h4>
+				<h5>{{record.netcgst}}</h5>
+				<h4>Net SGST</h4>
+				<h5>{{record.netsgst}}</h5>
+				<h4>Gross Amount</h4>
+				<h5>{{record.grossamt}}</h5>
+			</div>
+		
+		]]>
+	</template>
+	</kanban>
+
+</object-views>

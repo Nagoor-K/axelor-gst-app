@@ -5,13 +5,14 @@
 
 <module package="com.axelor.company.db" name="Sequences"/>
 
-<sequence name="company.create.sequence" initial="0" increment="1" padding="4" prefix="ABC" suffix=""/>
+<sequence name="company.create.sequence" initial="0" increment="1" padding="4" prefix="prefix" suffix="suffix"/>
 
 <entity name="Sequences">
 	<string name="prefix" title="Prefix" required="true"/>
 	<string name="suffix" title="Suffix" />
 	<integer name="padding" title="Padding" min="1" max="10"/>
 	<string name="nextnumber" title="Next Number" sequence="company.create.sequence" />
+	<many-to-one ref="com.axelor.meta.db.MetaModel" name="model" title="Model" required="true"/>
 	
 </entity>
 
