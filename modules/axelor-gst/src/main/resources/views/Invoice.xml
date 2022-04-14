@@ -22,17 +22,17 @@
 			<field name="grossamt"/>
 	</grid>
 	
-	<form model="com.axelor.invoice.db.Invoice" title="Country" name="invo-form">
+	<form model="com.axelor.invoice.db.Invoice" title="Country" name="invo-form" onNew="action.set.date" onSave="com.axelor.product.db.controller.InvoiceController:invoicesetup">
 			<panel>
-				<field name="status" widget="NavSelect"/>
+				<field name="status" widget="NavSelect" colSpan="12" readonly="true"/>
 				<field name="company"/>
 				<field name="reference"/>
 				<field name="ondate"/>
 				<field name="priority"/>
-				<field name="party"/>
+				<field name="party" onChange="com.axelor.product.db.controller.InvoiceController:setDefaults"/>
 				<field name="partycontact"/>
 				<field name="invoiceaddress"/>
-				<field name="shippingaddress"/>
+				<field name="shippingaddress" hideIf="uiasa == true"/>
 				<field name="uiasa"/>
 				<field name="netamt"/>
 				<field name="netigst"/>
@@ -41,7 +41,31 @@
 				<field name="grossamt"/>
 				<panel-related field="invoiceitems" />
 			</panel>
+			<panel sidebar="true">
+				<button onClick="action.set.draft" name="setDraft" title="Set Draft" colSpan="6"/>
+				<button onClick="action.set.validated" name="setValidated" title="Set Validated" colSpan="6"/>
+				<button onClick="action.set.paid" name="setPaid" title="Set Paid" colSpan="6"/>
+				<button onClick="action.set.cancelled" name="setCancelled" title="Set Cancelled" colSpan="6"/>
+				
+			</panel>
 	</form>
+	
+	<action-record name="action.set.draft" model="com.axelor.invoice.db.Invoice">
+		<field name="status" expr="draft"/>
+	</action-record>
+	
+	<action-record name="action.set.validated" model="com.axelor.invoice.db.Invoice">
+		<field name="status" expr="validated"/>
+	</action-record>
+	
+	<action-record name="action.set.paid" model="com.axelor.invoice.db.Invoice">
+		<field name="status" expr="paid"/>
+	</action-record>
+	
+	<action-record name="action.set.cancelled" model="com.axelor.invoice.db.Invoice">
+		<field name="status" expr="cancelled"/>
+	</action-record>
+	
 	
 	<kanban columnBy="status" model="com.axelor.invoice.db.Invoice" sequenceBy="priority" title="Invoice" name="invo-kanban">
 		<field name="company"/>
@@ -90,5 +114,34 @@
 		]]>
 	</template>
 	</kanban>
+	
+	<chart name="chart.invoices.per.customer" title="Invoice per Coustomer"> 
+		  <search-fields> 
+		     <field type="datetime" name="ondate" title="From Date"/>
+		     <field type="datetime" name="ondate" title="To Date"/>
+		  </search-fields>
+		  <dataset type="jpql"> 
+		  <![CDATA[
+		  	SELECT
+		        SUM(self.status) AS invoices,
+		        party AS customer
+		    FROM
+		        Invoice self
+		    LEFT JOIN
+		        self.party AS _customer
+		    WHERE
+		        YEAR(self.ondate) = YEAR(current_date)
+		    GROUP BY
+		        _customer.name
+		  	
+		  ]]>
+		  </dataset>
+		  <category key="month" type="month"/> 
+		  <series key="invoices" groupBy="customer" type="bar"/> 
+</chart>
+	
+	<action-record name="action.set.date" model="com.axelor.invoice.db.Invoice">
+		<field name="ondate" expr="eval:__datetime__"/>
+	</action-record>
 
 </object-views>

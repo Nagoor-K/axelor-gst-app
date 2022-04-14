@@ -89,17 +89,50 @@
 
 <menuitem title="Invoice" name="axelor-root-invoice" parent="axelor-root" icon-background="yellow" icon="fa-user"/>
 
-<menuitem title="Invoice" name="axelor-root-invoice-invoice" parent="axelor-root-invoice" action="axelor.root.invoice.invoice"/>
+<menuitem title="Create Invoice" name="axelor-root-invoice-invoice" parent="axelor-root-invoice" action="axelor.root.invoice.invoice"/>
 <action-view name="axelor.root.invoice.invoice" title="Invoice" model="com.axelor.invoice.db.Invoice">
-	<view type="grid" name="invo-grid"/>
 	<view type="form" name="invo-form"/>
+	<view type="grid" name="invo-grid"/>
 	<view type="kanban" name="invo-kanban"/>
+	<view type="chart" name="chart.sales.per.month"/>
 </action-view>
 
-<menuitem title="Invoice Line" name="axelor-root-invoice-invoice-line" parent="axelor-root-invoice" action="axelor.root.invoice.invoice.line"/>
-<action-view name="axelor.root.invoice.invoice.line" title="Invoice Line" model="com.axelor.invoice.db.InvoiceLine">
-	<view type="grid" name="invoice-grid"/>
-	<view type="form" name="invoice-form"/>
+<menuitem title="Draft Invoices" name="axelor-root-invoice-draft-invoice" parent="axelor-root-invoice" action="axelor.root.invoice.draft.invoice"/>
+<action-view name="axelor.root.invoice.draft.invoice" title="Invoice" model="com.axelor.invoice.db.Invoice">
+	<view type="grid" name="invo-grid"/>
+	<view type="form" name="invo-form"/>
+	<domain>self.status = :status</domain>
+    <context name="status" expr="draft" />
+</action-view>
+
+<menuitem title="Validated Invoices" name="axelor-root-invoice-validated-invoice" parent="axelor-root-invoice" action="axelor.root.invoice.validate.invoice"/>
+<action-view name="axelor.root.invoice.validate.invoice" title="Invoice" model="com.axelor.invoice.db.Invoice">
+	<view type="grid" name="invo-grid"/>
+	<view type="form" name="invo-form"/>
+	<domain>self.status = :status</domain>
+    <context name="status" expr="validated" />
+</action-view>
+
+<menuitem title="Paid Invoices" name="axelor-root-invoice-paid-invoice" parent="axelor-root-invoice" action="axelor.root.invoice.paid.invoice"/>
+<action-view name="axelor.root.invoice.paid.invoice" title="Invoice" model="com.axelor.invoice.db.Invoice">
+	<view type="grid" name="invo-grid"/>
+	<view type="form" name="invo-form"/>
+	<domain>self.status = :status</domain>
+    <context name="status" expr="paid" />
+</action-view>
+
+<menuitem title="Cancelled Invoices" name="axelor-root-invoice-cancelled-invoice" parent="axelor-root-invoice" action="axelor.root.invoice.cancelled.invoice"/>
+<action-view name="axelor.root.invoice.cancelled.invoice" title="Invoice" model="com.axelor.invoice.db.Invoice">
+	<view type="grid" name="invo-grid"/>
+	<view type="form" name="invo-form"/>
+	<domain>self.status = :status</domain>
+    <context name="status" expr="cancelled" />
+</action-view>
+
+<menuitem title="All Invoices" name="axelor-root-invoice-all-invoice" parent="axelor-root-invoice" action="axelor.root.invoice.all.invoice"/>
+<action-view name="axelor.root.invoice.all.invoice" title="Invoice" model="com.axelor.invoice.db.Invoice">
+	<view type="grid" name="invo-grid"/>
+	<view type="form" name="invo-form"/>
 </action-view>
 
 </object-views>
