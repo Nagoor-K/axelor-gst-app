@@ -35,21 +35,33 @@ public class InvoiceController {
 	}
 	public void invoicesetup(ActionRequest request, ActionResponse response) {
 		Invoice invoice=request.getContext().asType(Invoice.class);
-		BigDecimal igst=invoice.getInvoiceitems().get(0).getIgst();
-		BigDecimal cgst=invoice.getInvoiceitems().get(0).getCgst();
-		BigDecimal sgst=invoice.getInvoiceitems().get(0).getSgst();
-		BigDecimal netamt=invoice.getInvoiceitems().get(0).getNetamt();
-		BigDecimal grossamt=invoice.getInvoiceitems().get(0).getGrossamt();
+		List<InvoiceLine> invoiceLine=invoice.getInvoiceitems();
+		BigDecimal igst=BigDecimal.valueOf(0);
+		for(InvoiceLine item: invoiceLine) {
+			igst=igst.add(item.getIgst());
+		}
+		response.setValue("netigst", igst);
 		
-		response.setValue("igst", igst);
-		response.setValue("cgst", cgst);
-		response.setValue("sgst", sgst);
-		response.setValue("netamt", netamt);
-		response.setValue("grossamt", grossamt);
+		BigDecimal cgst=BigDecimal.valueOf(0);
+		for(InvoiceLine item: invoiceLine) {
+			cgst=cgst.add(item.getCgst());
+		}
+		response.setValue("netcgst", cgst);
 		
+		BigDecimal sgst=BigDecimal.valueOf(0);
+		for(InvoiceLine item: invoiceLine) {
+			sgst=sgst.add(item.getSgst());
+		}
+		response.setValue("netsgst", sgst);
 		
-		
+		BigDecimal grssamt=BigDecimal.valueOf(0);
+		for(InvoiceLine item: invoiceLine) {
+			grssamt=grssamt.add(item.getGrossamt());
+		}
+		response.setValue("grossamt", grssamt);
 	}
+	
+	
 	
 	
 	

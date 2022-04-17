@@ -25,7 +25,7 @@
 				<field name="item"/>
 				<field name="qty"/>
 				<field name="price"/>
-				<field name="netamt" onChange="save,com.axelor.product.db.controller.InvoiceLineController:setnetamt"/>
+				<field name="netamt" onChange="com.axelor.product.db.controller.InvoiceLineController:setnetamt"/>
 				<field name="gstrate"/>
 				<field name="igst"/>
 				<field name="sgst"/>

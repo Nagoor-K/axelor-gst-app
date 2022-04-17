@@ -39,7 +39,7 @@
 				<field name="netcgst"/>
 				<field name="netsgst"/>
 				<field name="grossamt"/>
-				<panel-related field="invoiceitems" />
+				<panel-related field="invoiceitems" colSpan="12"/>
 			</panel>
 			<panel sidebar="true">
 				<button onClick="action.set.draft" name="setDraft" title="Set Draft" colSpan="6"/>
@@ -142,6 +142,7 @@
 	
 	<action-record name="action.set.date" model="com.axelor.invoice.db.Invoice">
 		<field name="ondate" expr="eval:__datetime__"/>
+		<field name="company" expr="Axelor"/>
 	</action-record>
 
 </object-views>
